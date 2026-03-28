@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Criativalia — Night Shift Report</title>
+  <title>Criativalia — Status Real</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600;700&display=swap');
     
@@ -58,20 +58,6 @@
       border: 1px solid var(--accent);
     }
     
-    .badge::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      background: var(--accent);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-    
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-    
     h1 {
       font-family: 'Playfair Display', serif;
       font-size: 48px;
@@ -82,50 +68,13 @@
       -webkit-text-fill-color: transparent;
     }
     
-    .subtitle {
-      color: var(--text-secondary);
-      font-size: 16px;
-    }
-    
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-bottom: 48px;
-    }
-    
     @media (max-width: 768px) {
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
       h1 { font-size: 32px; }
     }
     
-    .stat-card {
-      background: var(--surface);
-      border-radius: 16px;
-      padding: 24px;
-      text-align: center;
-      border: 1px solid var(--surface-2);
-      transition: transform 0.2s;
-    }
-    
-    .stat-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent);
-    }
-    
-    .stat-value {
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--accent);
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    
-    .stat-label {
-      font-size: 12px;
+    .subtitle {
       color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      font-size: 16px;
     }
     
     .section {
@@ -145,260 +94,205 @@
       gap: 12px;
     }
     
-    .highlight {
-      color: var(--accent);
-    }
+    .highlight { color: var(--accent); }
     
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    
-    .timeline-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      padding: 16px;
-      background: var(--surface-2);
-      border-radius: 12px;
-      border-left: 3px solid var(--accent);
-    }
-    
-    .timeline-time {
-      font-size: 12px;
-      color: var(--text-secondary);
-      font-family: 'SF Mono', monospace;
-      min-width: 60px;
-    }
-    
-    .timeline-content {
-      flex: 1;
-    }
-    
-    .timeline-agent {
-      font-size: 11px;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 4px;
-    }
-    
-    .timeline-task {
-      font-size: 14px;
-      color: var(--text);
-    }
-    
-    .revenue-projections {
+    .stats-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      margin-top: 24px;
     }
     
     @media (max-width: 600px) {
-      .revenue-projections { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr; }
     }
     
-    .projection-card {
-      background: linear-gradient(135deg, var(--surface-2) 0%, var(--surface) 100%);
-      border-radius: 12px;
-      padding: 20px;
+    .stat-card {
+      background: var(--surface-2);
+      border-radius: 16px;
+      padding: 24px;
       text-align: center;
-      border: 1px solid var(--accent-glow);
     }
     
-    .projection-value {
-      font-size: 28px;
+    .stat-value {
+      font-size: 36px;
       font-weight: 700;
-      color: var(--success);
-      margin-bottom: 4px;
-    }
-    
-    .projection-label {
-      font-size: 12px;
-      color: var(--text-secondary);
-    }
-    
-    .insight-box {
-      background: linear-gradient(90deg, var(--accent-glow) 0%, transparent 100%);
-      border-left: 3px solid var(--accent);
-      padding: 20px;
-      border-radius: 0 12px 12px 0;
-      margin-top: 24px;
-    }
-    
-    .insight-title {
-      font-weight: 600;
       color: var(--accent);
       margin-bottom: 8px;
     }
     
-    .insight-text {
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+    }
+    
+    .alert {
+      background: linear-gradient(90deg, rgba(255, 69, 58, 0.2) 0%, transparent 100%);
+      border-left: 3px solid var(--danger);
+      padding: 20px;
+      border-radius: 0 12px 12px 0;
+      margin-bottom: 24px;
+    }
+    
+    .alert-title {
+      font-weight: 600;
+      color: var(--danger);
+      margin-bottom: 8px;
+    }
+    
+    .alert-text {
       color: var(--text-secondary);
       font-size: 14px;
-      line-height: 1.6;
     }
     
-    .agents-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 16px;
+    .agent-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
     }
     
-    .agent-chip {
+    @media (max-width: 600px) {
+      .agent-grid { grid-template-columns: 1fr; }
+    }
+    
+    .agent-card {
       background: var(--surface-2);
-      padding: 6px 12px;
-      border-radius: 100px;
-      font-size: 11px;
-      color: var(--text-secondary);
+      padding: 16px;
+      border-radius: 12px;
       border: 1px solid transparent;
       transition: all 0.2s;
     }
     
-    .agent-chip:hover {
-      border-color: var(--accent);
-      color: var(--text);
+    .agent-card.active {
+      border-color: var(--success);
     }
     
-    .agent-chip.active {
-      background: var(--accent-glow);
-      color: var(--accent);
-      border-color: var(--accent);
+    .agent-card.blocked {
+      border-color: var(--danger);
+      opacity: 0.6;
     }
     
-    footer {
-      text-align: center;
-      padding-top: 32px;
-      color: var(--text-secondary);
+    .agent-name {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    
+    .agent-status {
       font-size: 12px;
+      color: var(--text-secondary);
     }
     
-    .signature {
-      font-family: 'Playfair Display', serif;
+    .agent-status.active { color: var(--success); }
+    .agent-status.blocked { color: var(--danger); }
+    
+    .task-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .task-item {
+      background: var(--surface-2);
+      padding: 16px;
+      border-radius: 12px;
+      border-left: 3px solid var(--accent);
+    }
+    
+    .task-priority {
+      font-size: 11px;
       color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    
+    .task-title {
       font-size: 14px;
-      margin-top: 8px;
+      margin-bottom: 4px;
+    }
+    
+    .task-agent {
+      font-size: 12px;
+      color: var(--text-secondary);
     }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <div class="badge">Night Shift Complete</div>
-      <h1>Morning Report</h1>
-      <p class="subtitle">28 de Março, 2026 • 09:09 GMT+8</p>
+      <div class="badge">Sistema Atualizado — 28/03</div>
+      <h1>Status Real</h1>
+      <p class="subtitle">O que funciona vs o que está bloqueado</p>
     </header>
-    
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-value">28</div>
-        <div class="stat-label">Tarefas Completadas</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">1,360</div>
-        <div class="stat-label">Oportunidades Detectadas</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">21</div>
-        <div class="stat-label">Agentes Ativos</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">13</div>
-        <div class="stat-label">Tarefas na Fila</div>
-      </div>
-    </div>
     
     <div class="section">
       <h2 class="section-title">
-        <span>💰</span>
-        Projeção de <span class="highlight">Receita</span>
+        <span>📊</span>
+        Dados <span class="highlight">Reais</span> do Shopify
       </h2>
-      <p style="color: var(--text-secondary); margin-bottom: 16px;">
-        Baseado nas oportunidades P0 identificadas pelos agentes durante a noite:
-      </p>
       
-      <div class="revenue-projections">
-        <div class="projection-card">
-          <div class="projection-value">R$45k</div>
-          <div class="projection-label">Reativação 1504 clientes</div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value">R$19.7k</div>
+          <div class="stat-label">MTD em Vendas</div>
         </div>
-        <div class="projection-card">
-          <div class="projection-value">R$12k</div>
-          <div class="projection-label">Recuperação carrinho/mês</div>
+        <div class="stat-card">
+          <div class="stat-value">43</div>
+          <div class="stat-label">Clientes Únicos</div>
         </div>
-        <div class="projection-card">
-          <div class="projection-value">R$18k</div>
-          <div class="projection-label">Criativalia Club/mês</div>
+        <div class="stat-card">
+          <div class="stat-value">11.6%</div>
+          <div class="stat-label">Taxa Recompra</div>
         </div>
       </div>
-      
-      <div class="insight-box">
-        <div class="insight-title">💡 Insight do Data Analyst</div>
-        <div class="insight-text">
-          O LTV atual está em <strong>R$212</strong> contra uma meta de <strong>R$540</strong> — um gap de 154%. 
-          Se implementarmos as 3 oportunidades P0 acima, projetamos um aumento de <strong>R$67k/mês</strong> 
-          em receita recorrente e aproximadamente <strong>+85 no LTV</strong> nos próximos 90 dias.
-        </div>
+    </div>
+    
+    <div class="alert">
+      <div class="alert-title">⚠️ Agentes Bloqueados (sem integração)</div>
+      <div class="alert-text">
+        <strong>Traffic Manager:</strong> Não pode auditar campanhas Meta sem API token.<br>
+        <strong>Ziglar/WhatsApp:</strong> Não pode automatizar sem WhatsApp Business API.<br>
+        <em>Estes estão PARADOS até você configurar as integrações no kanban.</em>
       </div>
     </div>
     
     <div class="section">
       <h2 class="section-title">
         <span>⚡</span>
-        O Que Aconteceu <span class="highlight">Enquanto Você Dormia</span>
+        Agentes <span class="highlight">Trabalhando</span>
       </h2>
       
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-time">01:11</div>
-          <div class="timeline-content">
-            <div class="timeline-agent">Customer Support</div>
-            <div class="timeline-task">Criou 20 templates WhatsApp → redução de 15min para 2min de resposta</div>
-          </div>
+      <div class="agent-grid">
+        <div class="agent-card active">
+          <div class="agent-name">Data Analyst</div>
+          <div class="agent-status active">✅ Com dados Shopify reais</div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-time">01:07</div>
-          <div class="timeline-content">
-            <div class="timeline-agent">Brand Director</div>
-            <div class="timeline-task">Revisou copy de todos os emails — consistência Japandi garantida</div>
-          </div>
+        <div class="agent-card active">
+          <div class="agent-name">Shopify Specialist</div>
+          <div class="agent-status active">✅ Com acesso à loja</div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-time">00:51</div>
-          <div class="timeline-content">
-            <div class="timeline-agent">CRO Specialist</div>
-            <div class="timeline-task">Implementou exit-intent popup com 10% off (+8% conversão projetada)</div>
-          </div>
+        <div class="agent-card active">
+          <div class="agent-name">Financial Manager</div>
+          <div class="agent-status active">✅ Com métricas reais</div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-time">00:21</div>
-          <div class="timeline-content">
-            <div class="timeline-agent">Designer</div>
-            <div class="timeline-task">Criou assets para campanha de Páscoa (2 semanas para lançar)</div>
-          </div>
+        <div class="agent-card active">
+          <div class="agent-name">Production Manager</div>
+          <div class="agent-status active">✅ Com dados de estoque</div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-time">00:07</div>
-          <div class="timeline-content">
-            <div class="timeline-agent">Copywriter</div>
-            <div class="timeline-task">Escreveu copy para anúncios Meta (3 variações para teste A/B)</div>
-          </div>
+        <div class="agent-card active">
+          <div class="agent-name">Customer Support</div>
+          <div class="agent-status active">✅ Templates, organização</div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-time">23:51</div>
-          <div class="timeline-content">
-            <div class="timeline-agent">Social Media</div>
-            <div class="timeline-task">Planejou conteúdo de ambientes decorados (3x/semana)</div>
-          </div>
+        <div class="agent-card active">
+          <div class="agent-name">Copywriter</div>
+          <div class="agent-status active">✅ Com base em dados reais</div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-time">23:37</div>
-          <div class="timeline-content">
-            <div class="timeline-agent">Traffic Manager</div>
-            <div class="timeline-task">Criou lookalike audience dos 43 clientes fiéis (projeção: -20% CAC)</div>
-          </div>
+        <div class="agent-card blocked">
+          <div class="agent-name">Traffic Manager</div>
+          <div class="agent-status blocked">❌ Sem Meta API</div>
+        </div>
+        <div class="agent-card blocked">
+          <div class="agent-name">Dev Automation (Ziglar)</div>
+          <div class="agent-status blocked">❌ Sem WhatsApp API</div>
         </div>
       </div>
     </div>
@@ -406,72 +300,47 @@
     <div class="section">
       <h2 class="section-title">
         <span>🎯</span>
-        Prioridades <span class="highlight">Hoje</span>
+        Próximas <span class="highlight">Tarefas Reais</span>
       </h2>
       
-      <div class="timeline">
-        <div class="timeline-item" style="border-left-color: var(--danger);">
-          <div class="timeline-time">P0</div>
-          <div class="timeline-content">
-            <div class="timeline-agent">Copywriter + Shopify Specialist</div>
-            <div class="timeline-task">Configurar campanha de reativação para 1504 clientes inativos</div>
-          </div>
+      <div class="task-list">
+        <div class="task-item">
+          <div class="task-priority">P0 — Data Analyst</div>
+          <div class="task-title">Analisar padrão de abandono dos 38 clientes</div>
+          <div class="task-agent">Baseado em dados reais do Shopify</div>
         </div>
-        <div class="timeline-item" style="border-left-color: var(--danger);">
-          <div class="timeline-time">P0</div>
-          <div class="timeline-content">
-            <div class="timeline-agent">Shopify Specialist</div>
-            <div class="timeline-task">Implementar recuperação de carrinho abandonado (email + WhatsApp)</div>
-          </div>
+        <div class="task-item">
+          <div class="task-priority">P0 — Financial Manager</div>
+          <div class="task-title">Estratégia ticket médio R$411 → R$500</div>
+          <div class="task-agent">R$4.320/mês deixados na mesa</div>
         </div>
-        <div class="timeline-item" style="border-left-color: var(--warning);">
-          <div class="timeline-time">P1</div>
-          <div class="timeline-content">
-            <div class="timeline-agent">UI Guardian</div>
-            <div class="timeline-task">Revisar e corrigir UI mobile do Control Plane (você pediu!)</div>
-          </div>
+        <div class="task-item">
+          <div class="task-priority">P0 — Shopify Specialist</div>
+          <div class="task-title">Identificar gargalos de estoque</div>
+          <div class="task-agent">Apenas 1.4 itens/pedido (muito baixo)</div>
         </div>
       </div>
     </div>
     
     <div class="section">
       <h2 class="section-title">
-        <span>🤖</span>
-        Exército em <span class="highlight">Ação</span>
+        <span>⏳</span>
+        Integrações <span class="highlight">Pendentes</span> (só você faz)
       </h2>
       
-      <p style="color: var(--text-secondary); margin-bottom: 16px;">
-        Todos os 21 agentes estão online e prontos. Última atividade detectada:
-      </p>
-      
-      <div class="agents-row">
-        <div class="agent-chip active">CEO Orchestrator</div>
-        <div class="agent-chip active">Data Analyst</div>
-        <div class="agent-chip active">Copywriter</div>
-        <div class="agent-chip active">Designer</div>
-        <div class="agent-chip active">Shopify Specialist</div>
-        <div class="agent-chip active">CRO Specialist</div>
-        <div class="agent-chip active">Traffic Manager</div>
-        <div class="agent-chip active">Social Media</div>
-        <div class="agent-chip active">Brand Director</div>
-        <div class="agent-chip active">Customer Support</div>
-        <div class="agent-chip">+11 mais...</div>
-      </div>
-      
-      <div class="insight-box" style="margin-top: 24px;">
-        <div class="insight-title">🌙 Modo Noturno Ativado</div>
-        <div class="insight-text">
-          Durante a noite (22h-07h), os agentes executaram apenas tarefas seguras: análises, 
-          planejamento, criação de assets, otimizações. Nenhum deploy de produção foi feito 
-          sem sua aprovação. O Night Watch fez patrol a cada 30 minutos.
+      <div class="task-list">
+        <div class="task-item" style="border-left-color: var(--danger);">
+          <div class="task-priority" style="color: var(--danger);">P0 — Meta Marketing API</div>
+          <div class="task-title">Para Traffic Manager funcionar</div>
+          <div class="task-agent">business.facebook.com → Gerar token</div>
+        </div>
+        <div class="task-item" style="border-left-color: var(--danger);">
+          <div class="task-priority" style="color: var(--danger);">P0 — WhatsApp Business API</div>
+          <div class="task-title">Para Ziglar e automação funcionar</div>
+          <div class="task-agent">developers.facebook.com → Configurar app</div>
         </div>
       </div>
     </div>
-    
-    <footer>
-      <p>Relatório gerado automaticamente pelo CEO_ORCHESTRATOR</p>
-      <p class="signature">Criativalia Control Plane v3.0</p>
-    </footer>
   </div>
 </body>
 </html>
